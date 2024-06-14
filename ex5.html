@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulation de Liste avec jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px;
+            cursor: pointer;
+            padding: 5px;
+            background-color: #f0f0f0;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#ajouter").click(function(){
+                var valeur = $("#nouvelElement").val();
+                $("#maListe").append("<li>" + valeur + "</li>");
+                $("#nouvelElement").val("");
+            })
+        })
+        $(document).ready(function(){
+            $("#supprimer").click(function(){
+                var valeur = $("#nouvelElement").val();
+                if($("li:contains(" + valeur +")")){
+                    $("li:contains(" + valeur +")").remove();
+                }
+                $("#nouvelElement").val("");
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>List manipulation with jQuery</h1>
+    <input type="text" id="nouvelElement" placeholder="Nouvel élément">
+    <button id="ajouter">Add</button>
+    <button id="supprimer">Delete</button>
+    <ul id="maListe">
+    <!-- Liste vide pour commencer -->
+    </ul>
+</body>
+</html>
